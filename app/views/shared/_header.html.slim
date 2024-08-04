@@ -1,0 +1,4 @@
+.flex.w-full.justify-between.items-center.h-16.bg-violet-900.text-white
+  .font-bold.text-2xl.px-8 Eventapp
+  .px-8
+    = render(SignedUserComponent.new().with_content("My Account")) if Current.user
