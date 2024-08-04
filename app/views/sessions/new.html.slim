@@ -7,7 +7,7 @@
       h1.block.text-xl.font-bold Sign in
       br
 
-      = form_with(url: sign_in_path, class: 'block bg-stone-100 p-10 rounded-lg shadow-lg') do |form|
+      = form_with(url: sign_in_path, class: 'block bg-stone-100 p-10 rounded-lg shadow-lg my-8') do |form|
         .flex.flex-col.gap-4
           div
             = form.label :email, style: "display: block"

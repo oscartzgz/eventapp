@@ -1,6 +1,6 @@
 .flex.gap-4.bg-stone-100.rounded-full.px-3.py-2.items-center
   i.fa-solid.fa-circle-user.text-2xl.text-gray-400
-  span.text-main My account
+  span.text-main = Current.user.name
   = render(DropdownComponent.new()) do |component|
     
     .bg-gray-200.rounded-full.w-6.text-center.text-gray-500

@@ -1,0 +1,34 @@
+.flex.justify-center.w-full
+  .flex.flex-col
+    = AlertComponent.new(type: :aler).with_content(alert) if alert
+
+    h1.block.text-xl.font-bold Change your password
+
+    = form_with(url: password_path, method: :patch, class: 'block bg-stone-100 p-10 rounded-lg shadow-lg my-8') do |form|
+      - if @user.errors.any?
+        div style="color: red">
+          h2 #{pluralize(@user.errors.count, "error")} prohibited this user from being saved:
+
+          ul
+            - @user.errors.each do |error|
+              li = error.full_message
+
+      .flex.flex-col.gap-4
+        div
+          = form.label :password_challenge, style: "display: block"
+          = form.password_field :password_challenge, required: true, autofocus: true, autocomplete: "current-password"
+
+        div
+          = form.label :password, "New password", style: "display: block"
+          = form.password_field :password, required: true, autocomplete: "new-password"
+          div 12 characters minimum.
+
+        div
+          = form.label :password_confirmation, "Confirm new password", style: "display: block"
+          = form.password_field :password_confirmation, required: true, autocomplete: "new-password"
+
+        div
+          = form.submit "Save changes"
+
+    div
+      = link_to "Back", root_path, class: :link

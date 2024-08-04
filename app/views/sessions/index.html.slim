@@ -1,0 +1,29 @@
+.flex.justify-center.w-full
+  .flex.flex-col
+    = AlertComponent.new(type: :success).with_content(alert) if alert
+
+
+    h1.block.text-xl.font-bold Devices & Sessions
+
+    #sessions.my-8
+      - @sessions.each do |session|
+        div id=(dom_id session)
+          p
+            strong> User Agent:
+            = session.user_agent
+
+          p
+            strong> Ip Address:
+            = session.ip_address
+
+          p
+            strong> Created at:
+            = session.created_at
+
+        p
+          = button_to "Log out", session, method: :delete, class: 'text-red-500'
+
+    br
+
+    div
+      = link_to "Back", root_path, class: :link
