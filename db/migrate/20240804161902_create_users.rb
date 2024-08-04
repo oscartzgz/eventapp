@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration[7.2]
       t.string :name,            null: false
       t.string :email,           null: false, index: { unique: true }
       t.string :password_digest, null: false
-      t.integer :role,           null: false
+      t.integer :role,           null: false, default: 0
 
       t.boolean :verified, null: false, default: false
 
