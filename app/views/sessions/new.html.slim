@@ -17,7 +17,7 @@
             = form.label :password, style: "display: block"
             = form.password_field :password, required: true, autocomplete: "current-password"
           div
-            = form.submit "Sign in", class: 'bg-violet-400 text-white px-4 py-2 rounded cursor-pointer'
+            = form.submit "Sign in", class: 'btn-primary'
 
       .flex.flex-col.gap-4.p-10
         = link_to "Sign up", sign_up_path, class: :link
