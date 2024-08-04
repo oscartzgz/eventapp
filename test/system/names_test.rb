@@ -5,7 +5,7 @@ class PasswordsTest < ApplicationSystemTestCase
     @user = sign_in_as(users(:lazaro_nixon))
   end
 
-  test "updating the password" do
+  test "updating the name" do
     click_on "Change name"
 
     fill_in "New name", with: "Other name"
