@@ -1,0 +1,15 @@
+.flex.justify-center.w-full
+  .flex.flex-col
+    = render(AlertComponent.new(type: :error).with_content(alert)) if alert
+
+
+    h1.block.text-xl.font-bold Forgot your password?
+
+    = form_with(url: identity_password_reset_path, class: 'block bg-stone-100 p-10 rounded-lg shadow-lg my-8 max-w-96') do |form|
+      .flex.flex-col.gap-4
+        div
+          = form.label :email, style: "display: block"
+          = form.email_field :email, required: true, autofocus: true
+
+        div
+          = form.submit "Send password reset email", class: 'btn-primary'
