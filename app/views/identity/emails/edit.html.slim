@@ -20,6 +20,9 @@
 
       .flex.flex-col.gap-4
         div
+          = form.label :name, "New name", style: "display: block"
+          = form.text_field :name, required: true, autofocus: true
+        div
           = form.label :email, "New email", style: "display: block"
           = form.email_field :email, required: true, autofocus: true
 
