@@ -7,20 +7,21 @@ class Identity::AccountsTest < ApplicationSystemTestCase
 
   test "updating the name" do
     find("#userDropdown").click
-    click_on "Change name address"
+    click_on "My account"
 
-    fill_in "New name", with: "new_email@hey.com"
+    fill_in "New name", with: "My new name"
     click_on "Save changes"
 
     assert_text "Your name has been changed"
   end
 
   test "convert into organizer" do
-    @user.update! verified: false
+    find("#userDropdown").click
+    click_on "My account"
 
-    click_on "Change email address"
-    click_on "Re-send verification email"
+    find("Do you want to organize events?").click
+    click_button("I want to be an organizer")
 
-    assert_text "We sent a verification email to your email address"
+    assert_text "You converted into organizer, now you can manage events."
   end
 end
