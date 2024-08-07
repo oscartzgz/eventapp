@@ -8,6 +8,7 @@ class SessionsTest < ApplicationSystemTestCase
   test "visiting the index" do
     sign_in_as @user
 
+    find("#userDropdown").click
     click_on "Devices & Sessions"
     assert_selector "h1", text: "Sessions"
   end
@@ -24,6 +25,7 @@ class SessionsTest < ApplicationSystemTestCase
   test "signing out" do
     sign_in_as @user
 
+    find("#userDropdown").click
     click_on "Log out"
     assert_text "That session has been logged out"
   end
