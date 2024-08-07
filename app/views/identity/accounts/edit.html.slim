@@ -1,0 +1,39 @@
+.flex.justify-center.w-full
+  .flex.flex-col
+    = AlertComponent.new(type: :alert).with_content(alert) if alert
+
+    h1.block.text-xl.font-bold Change your name
+
+    = form_with(url: identity_account_path, method: :patch, class: 'block bg-stone-100 p-10 rounded-lg shadow-lg my-8 max-w-96', data: {turbo: false}) do |form|
+      - if @user.errors.any?
+        div style="color: red"
+          h2 #{pluralize(@user.errors.count, "error")} prohibited this user from being saved:
+
+          ul
+            - @user.errors.each do |error|
+              li = error.full_message
+
+      .flex.flex-col.gap-4
+        div
+          = form.label :name, "New name", style: "display: block"
+          = form.text_field :name, required: true, autofocus: true
+
+        div
+          = form.submit "Save changes", class: 'btn-primary'
+
+    
+    - if Current.user.user?
+      details.my-4
+        summary.cursor-pointer Do you want to organize events?
+        p
+          span> If you want to be an organizer and create your own events click the button
+          = button_to 'I want to be an organizer', convert_into_organizer_identity_account_path, class: 'btn-primary'
+    - else
+      p.my-4
+        | You are an organizer.
+        br
+        small This means that you can manage events, create, edit, archive or destroy events.
+      
+
+    div
+      = link_to "Back", root_path, class: :link
