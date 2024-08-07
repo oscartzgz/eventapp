@@ -1,3 +1,15 @@
 .w-full
   = render(AlertComponent.new(type: :success).with_content(notice)) if notice
-  |Hello World!
+  
+  .flex.flex-col.gap-4
+    .flex.gap-4.items-center
+      h1.text-2xl.font-bold My events
+      = link_to 'Manage', events_path, class: 'link bg-violet-200 rounded px-2 text-sm' if Current.user.organizer?
+
+
+    div ToDo: last events created by user
+  
+
+    h1.text-2xl.font-bold Next events
+
+    div ToDo: all next events by other users
