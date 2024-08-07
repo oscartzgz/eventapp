@@ -19,7 +19,7 @@ class Identity::AccountsTest < ApplicationSystemTestCase
     find("#userDropdown").click
     click_on "My account"
 
-    find("Do you want to organize events?").click
+    find(".details", text: "Do you want to organize events?").click
     click_button("I want to be an organizer")
 
     assert_text "You converted into organizer, now you can manage events."
