@@ -1,0 +1,17 @@
+.flex.gap-4.bg-stone-100.rounded-full.px-3.py-2.items-center
+  i.fa-solid.fa-circle-user.text-2xl.text-gray-400
+  span.text-main = Current.user.name
+  = render(DropdownComponent.new()) do |component|
+    #userDropdown.bg-gray-200.rounded-full.w-6.text-center.text-gray-500
+      i.fa-solid.fa-ellipsis-vertical
+
+    - component.with_item do
+      = link_to "My account", edit_identity_account_path
+    - component.with_item do
+      = link_to "Change email", edit_identity_email_path
+    - component.with_item do
+      = link_to "Change password", edit_password_path
+    - component.with_item do
+      = link_to "Devices & Sessions", sessions_path
+    - component.with_item do
+      = button_to "Log out", Current.session, method: :delete, class: 'text-red-400 w-full text-left'

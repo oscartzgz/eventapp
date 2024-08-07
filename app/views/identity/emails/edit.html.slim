@@ -1,0 +1,37 @@
+.flex.justify-center.w-full
+  .flex.flex-col
+    = AlertComponent.new(type: :alert).with_content(alert) if alert
+
+    - if Current.user.verified?
+      h1.block.text-xl.font-bold Change your email
+    - else
+      h1.block.text-xl.font-bold Verify your email
+      p We sent a verification email to the address below. Check that email and follow those instructions to confirm it's your email address.
+      p = button_to "Re-send verification email", identity_email_verification_path, class: :link
+
+    = form_with(url: identity_email_path, method: :patch, class: 'block bg-stone-100 p-10 rounded-lg shadow-lg my-8 max-w-96') do |form|
+      - if @user.errors.any?
+        div style="color: red"
+          h2 #{pluralize(@user.errors.count, "error")} prohibited this user from being saved:
+
+          ul
+            - @user.errors.each do |error|
+              li = error.full_message
+
+      .flex.flex-col.gap-4
+        div
+          = form.label :name, "New name", style: "display: block"
+          = form.text_field :name, required: true, autofocus: true
+        div
+          = form.label :email, "New email", style: "display: block"
+          = form.email_field :email, required: true, autofocus: true
+
+        div
+          = form.label :password_challenge, style: "display: block"
+          = form.password_field :password_challenge, required: true, autocomplete: "current-password"
+
+        div
+          = form.submit "Save changes", class: 'btn-primary'
+
+    div
+      = link_to "Back", root_path, class: :link

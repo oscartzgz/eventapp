@@ -1,0 +1,5 @@
+.flex.w-full.justify-between.items-center.h-16.bg-violet-900.text-white
+  .font-bold.text-2xl.px-8
+    = link_to "Eventapp", root_url
+  .px-8
+    = render(SignedUserComponent.new()) if Current.user
