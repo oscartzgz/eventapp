@@ -2,12 +2,11 @@
   i.fa-solid.fa-circle-user.text-2xl.text-gray-400
   span.text-main = Current.user.name
   = render(DropdownComponent.new()) do |component|
-    
-    .bg-gray-200.rounded-full.w-6.text-center.text-gray-500
+    #userDropdown.bg-gray-200.rounded-full.w-6.text-center.text-gray-500
       i.fa-solid.fa-ellipsis-vertical
 
     - component.with_item do
-      = link_to "Change name", edit_identity_name_path
+      = link_to "My Account", edit_identity_account_path
     - component.with_item do
       = link_to "Change password", edit_password_path
     - component.with_item do

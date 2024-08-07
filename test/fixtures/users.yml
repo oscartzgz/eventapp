@@ -6,3 +6,17 @@ lazaro_nixon:
   password_digest: <%= BCrypt::Password.create("Secret1*3*5*") %>
   verified: true
   role: user
+
+user:
+  name: User one
+  email: user@hotmail.com
+  password_digest: <%= BCrypt::Password.create("Secret1*3*5*") %>
+  verified: true
+  role: user
+
+organizer:
+  name: Lazaronixon
+  email: organizer@hotmail.com
+  password_digest: <%= BCrypt::Password.create("Secret1*3*5*") %>
+  verified: true
+  role: organizer
