@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   resources :sessions, only: [ :index, :show, :destroy ]
   resource  :password, only: [ :edit, :update ]
   namespace :identity do
-    resource :name,               only: [ :edit, :update ]
+    resource :account,               only: [ :edit, :update ] do
+      member do
+        post :convert_into_organizer
+      end
+    end
     resource :email,              only: [ :edit, :update ]
     resource :email_verification, only: [ :show, :create ]
     resource :password_reset,     only: [ :new, :edit, :create, :update ]
