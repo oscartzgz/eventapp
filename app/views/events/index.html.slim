@@ -1,3 +1,21 @@
 .flex.flex-col.gap-4
   h1.text-2xl.font-bold My events
-  = render @events
+  table.w-full
+    thead
+      tr.text-left
+        th.px-2 Name
+        th.px-2 Starts at
+        th.px-2 Ends at
+        th.px-2
+    tbody
+      - @events.each do |event|
+        tr.even:bg-gray-100.hover:bg-violet-200
+          td.px-2.py-1 = event.name
+          td.px-2.py-1 = event.start_at
+          td.px-2.py-1 = event.end_at
+          td.px-2.py-1
+            .flex.gap-4
+              = link_to 'View', event, class: :link
+              = link_to 'Edit', edit_event_path(event), class: :link
+              = button_to 'Archive', 'archive_event_path(event)', class: :link
+  / = render(EventComponent.with_collection(@events))

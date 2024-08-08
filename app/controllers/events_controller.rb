@@ -1,6 +1,10 @@
 class EventsController < ApplicationController
   before_action :validate_organizer
   def index
+    @events = Event.all
+  end
+
+  def show
   end
 
   def new
