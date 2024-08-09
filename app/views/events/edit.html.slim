@@ -1,2 +1,24 @@
-h1 Events#edit
-p Find me in app/views/events/edit.html.slim
+.flex.justify-center.w-full
+  .flex.flex-col.w-1/2.gap-4
+    = form_with model: @event do |form|
+      .flex.flex-col.gap-4
+        = form.file_field :images, multiple: true, accept: 'image/*'
+        
+        label
+          | Name
+          = form.text_field :name, class: 'block w-full'
+
+        .flex.gap-4
+          label.w-full
+            | Start at
+            = form.datetime_local_field :start_at, class: 'block w-full'
+
+          label.w-full
+            | End at
+            = form.datetime_local_field :end_at, class: 'block w-full'
+
+        label
+          | Details
+          = form.text_area :description, class: 'block w-full'
+        
+        = form.submit 'Save event', class: 'btn-primary'

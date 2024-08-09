@@ -1,5 +1,5 @@
 .rounded-lg.shadow-lg.overflow-hidden
-  image.h-64.w-full.object-cover src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuJG2aXyX3KK2dA_Sqrq9unw-au9w4oPjEIw&s"
+  image.h-64.w-full.object-cover src="#{Event::FAKE_IMAGES.sample}"
   .flex.flex-col.gap-4.p-4
     .font-bold.text-xl = @event.name
     .text-gray-400 = @event.start_at.strftime('%d/%b/%Y - %I%P')
