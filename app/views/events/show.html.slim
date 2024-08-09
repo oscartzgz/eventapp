@@ -1,6 +1,7 @@
 .flex.justify-center.w-full
-  .flex.flex-col.w-1/2.gap-4
-    image.h-64.w-full.object-cover.rounded-t-lg src="#{Event::FAKE_IMAGES.sample}"
+  .flex.flex-col.w-1/2.gap-4.mb-24
+    = link_to '< Events', events_path, class: :link
+    image.w-full.object-cover.rounded.shadow src="#{Event::FAKE_IMAGES.sample}"
     .flex.justify-between
       div
         h1.font-bold.text-2xl = @event.name
