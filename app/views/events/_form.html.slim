@@ -16,9 +16,9 @@
         = form.datetime_local_field :end_at, class: 'block w-full'
         = field_errors(@event, :end_at)
 
-    label
-      | Details
-      = form.text_area :description, class: 'block w-full'
-      = field_errors(@event, :description)
+    div
+      label More details
+      = form.rich_text_area :content
+      = field_errors(@event, :content)
     
     = form.submit class: 'btn-primary'

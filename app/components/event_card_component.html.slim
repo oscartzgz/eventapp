@@ -3,6 +3,6 @@
   .flex.flex-col.gap-4.p-4
     .font-bold.text-xl = @event.name
     .text-gray-400 = @event.start_at.strftime('%d/%b/%Y - %I%P')
-    .text-main = truncate(@event.description, length: 100)
+    .text-main = truncate(@event.content, length: 100)
     .flex.justify-end
       = link_to 'View', @event, class: 'btn-secondary'

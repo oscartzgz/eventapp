@@ -15,7 +15,6 @@ class EventsController < ApplicationController
   def create
     @event = Current.user.events.build(event_params)
 
-    binding.break
     if @event.save
       redirect_to @event, notice: "The event was created."
     else
@@ -43,6 +42,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :start_at, :end_at, :description, images: [])
+    params.require(:event).permit(:name, :start_at, :end_at, :content, images: [])
   end
 end

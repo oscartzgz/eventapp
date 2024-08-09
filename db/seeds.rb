@@ -31,7 +31,7 @@ User.organizer.each do |user|
       name: Faker::Book.title,
       start_at: start_at,
       end_at: start_at + rand(5.hours),
-      description: Faker::Lorem.paragraphs
+      content: Faker::Lorem.paragraphs
     )
   end
 end

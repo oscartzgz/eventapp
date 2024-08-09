@@ -15,6 +15,7 @@ class Event < ApplicationRecord
 
   belongs_to :user
   has_many_attached :images
+  has_rich_text :content
 
-  validates_presence_of :name, :start_at, :end_at, :description
+  validates_presence_of :name, :start_at, :end_at, :content
 end
