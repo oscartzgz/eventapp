@@ -1,2 +1,4 @@
-h1 Events#new
-p Find me in app/views/events/new.html.slim
+.flex.justify-center.w-full
+  .flex.flex-col.w-1/2.gap-4
+    = link_to '< Back', events_path, class: :link
+    = render 'events/form'

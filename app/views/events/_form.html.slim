@@ -1,0 +1,24 @@
+= form_with model: @event, data: { turbo: false } do |form|
+  .flex.flex-col.gap-4
+    = form.file_field :images, multiple: true, accept: 'image/*'
+    label
+      | Name
+      = form.text_field :name, class: 'block w-full'
+      = field_errors(@event, :name)
+    .flex.gap-4
+      label.w-full
+        | Start at
+        = form.datetime_local_field :start_at, class: 'block w-full'
+        = field_errors(@event, :start_at)
+
+      label.w-full
+        | End at
+        = form.datetime_local_field :end_at, class: 'block w-full'
+        = field_errors(@event, :end_at)
+
+    label
+      | Details
+      = form.text_area :description, class: 'block w-full'
+      = field_errors(@event, :description)
+    
+    = form.submit class: 'btn-primary'

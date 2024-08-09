@@ -1,5 +1,7 @@
-.flex.flex-col.gap-4
-  h1.text-2xl.font-bold My events
+.flex.flex-col.gap-4.w-full
+  .flex.justify-between
+    h1.text-2xl.font-bold My events
+    = link_to 'Create an event', new_event_path, class: 'btn-primary'
   table.w-full
     thead
       tr.text-left
