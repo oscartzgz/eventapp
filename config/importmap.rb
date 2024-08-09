@@ -9,3 +9,5 @@ pin "@fortawesome/fontawesome-free",
   to: "https://ga.jspm.io/npm:@fortawesome/fontawesome-free@6.6.0/js/all.js"
 pin "@stimulus-components/dropdown", to: "@stimulus-components--dropdown.js" # @3.0.0
 pin "stimulus-use" # @0.52.2
+pin "trix"
+pin "@rails/actiontext", to: "actiontext.esm.js"

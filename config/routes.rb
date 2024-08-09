@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get "events/index"
+  get "events/new"
+  get "events/create"
+  get "events/edit"
+  get "events/update"
+  get "events/destroy"
   get  "sign_in", to: "sessions#new"
   post "sign_in", to: "sessions#create"
   get  "sign_up", to: "registrations#new"
@@ -28,4 +34,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  resources :events
 end
