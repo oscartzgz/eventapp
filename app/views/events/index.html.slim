@@ -10,17 +10,34 @@
         th.px-2 Name
         th.px-2 Starts at
         th.px-2 Ends at
+        th.px-2 State
         th.px-2
     tbody
       - @events.each do |event|
         tr.even:bg-gray-100.hover:bg-violet-200
-          td.px-2.py-1 = event.name
-          td.px-2.py-1 = event.start_at
-          td.px-2.py-1 = event.end_at
-          td.px-2.py-1
-            .flex.gap-4
-              = link_to 'View', event, class: :link
-              = link_to 'Edit', edit_event_path(event), class: :link
-              = button_to 'Archive', 'archive_event_path(event)', class: :link
-              = link_to 'Delete', event, class: 'link-error', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
-  / = render(EventComponent.with_collection(@events))
+          td.px-2.py-2 = link_to event.name, event, class: :link
+          td.px-2.py-2 = event.start_at
+          td.px-2.py-2 = event.end_at
+          td.px-2.py-2
+            = render(BadgeComponent.new(type: event_state_type(event.state))\
+                                    .with_content(event.state.camelize))
+          td.px-2.py-2
+            = render(DropdownComponent.new()) do |obj|
+              .w-6.h-6.bg-gray-200.rounded-full
+                i.fa-solid.fa-ellipsis-vertical
+
+              - if event.draft?
+                - obj.with_item do
+                  = button_to 'Publish', event_path(event, event: { state: :published } ), method: :put, class: :link
+              - unless event.archived? || event.draft?
+                - obj.with_item do
+                  = button_to 'Archive', event_path(event, event: { state: :archived } ), method: :put, class: :link
+              - unless event.archived?
+                - obj.with_item do
+                  div: .h-px.min-w-20.p-0.border
+              - unless event.archived?
+                - obj.with_item do
+                  = link_to 'Edit', edit_event_path(event), class: :link
+              - obj.with_item do 
+                = link_to 'Delete', event, class: 'link-error', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
+

@@ -1,6 +1,11 @@
 .flex.justify-center.w-full
   .flex.flex-col.w-1/2.gap-4.mb-24
-    = link_to '< Events', events_path, class: :link
+    = render(AlertComponent.new(type: :success).with_content(notice)) if notice
+    = render(AlertComponent.new(type: :error).with_content(notice)) if alert
+
+    .flex.justify-between
+      = link_to '< Events', events_path, class: :link
+      = render(BadgeComponent.new(type: event_state_type(@event.state)).with_content(@event.state.camelize))
     image.w-full.object-cover.rounded-t-lg.shadow src="#{Event::FAKE_IMAGES.sample}"
     .flex.justify-between
       div
