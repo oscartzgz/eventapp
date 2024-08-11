@@ -1,4 +1,6 @@
 .flex.flex-col.gap-4.w-full
+  = render(AlertComponent.new(type: :success).with_content(notice)) if notice
+  = render(AlertComponent.new(type: :error).with_content(notice)) if alert
   .flex.justify-between
     h1.text-2xl.font-bold My events
     = link_to 'Create an event', new_event_path, class: 'btn-primary'
@@ -20,4 +22,5 @@
               = link_to 'View', event, class: :link
               = link_to 'Edit', edit_event_path(event), class: :link
               = button_to 'Archive', 'archive_event_path(event)', class: :link
+              = link_to 'Delete', event, class: 'link-error', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
   / = render(EventComponent.with_collection(@events))

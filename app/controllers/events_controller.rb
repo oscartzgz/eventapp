@@ -33,6 +33,8 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @event.destroy
+    redirect_to events_url, notice: "The event was deleted."
   end
 
   private
