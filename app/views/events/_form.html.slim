@@ -9,13 +9,8 @@
     .flex.gap-4
       label.w-full
         | Start at
-        = form.datetime_local_field :start_at, class: 'block w-full'
-        = field_errors(@event, :start_at)
-
-      label.w-full
-        | End at
-        = form.datetime_local_field :end_at, class: 'block w-full'
-        = field_errors(@event, :end_at)
+        = form.datetime_local_field :start_date, class: 'block w-full'
+        = field_errors(@event, :start_date)
 
     div
       label More details

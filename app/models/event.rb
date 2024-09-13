@@ -17,7 +17,7 @@ class Event < ApplicationRecord
   has_many_attached :images
   has_rich_text :content
 
-  validates_presence_of :name, :start_at, :end_at, :content
+  validates_presence_of :name, :start_date, :content
 
   enum :state, { draft: 0, published: 1, archived: 3 }, default: :draft
 end

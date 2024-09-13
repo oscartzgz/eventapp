@@ -11,8 +11,7 @@
     .flex.justify-between
       div
         h1.font-bold.text-2xl = @event.name
-        p Starts at: #{@event.start_at}
-        p Ends at: #{@event.end_at}
+        p Starts at: #{@event.start_date}
       div
         = link_to 'Edit event', edit_event_path(@event), class: 'btn-primary'
     .mt-4

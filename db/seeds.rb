@@ -28,12 +28,11 @@ end
 puts "Creating users events"
 User.organizer.each do |user|
   rand(3..10).times do |_|
-    start_at = rand(30.days).hours.from_now
+    start_date = rand(30.days).hours.from_now
 
     user.events.create!(
       name: Faker::Book.title,
-      start_at: start_at,
-      end_at: start_at + rand(5.hours),
+      start_date: start_date,
       content: Faker::Lorem.paragraphs
     )
 

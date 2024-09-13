@@ -2,7 +2,7 @@
   = image_tag @event.images.first, class: "h-64 w-full object-cover"
   .flex.flex-col.gap-4.p-4
     .font-bold.text-xl = @event.name
-    .text-gray-400 = @event.start_at.strftime('%d/%b/%Y - %I%P')
+    .text-gray-400 = @event.start_date.strftime('%d/%b/%Y - %I%P')
     .text-main = truncate(@event.content.to_plain_text, length: 100)
     .flex.justify-end
       = link_to 'View', @event, class: 'btn-secondary'

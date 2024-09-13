@@ -2,14 +2,12 @@
 
 one:
   name: MyString
-  start_at: 2024-08-07 01:11:08
-  end_at: 2024-08-07 01:11:08
+  start_date: 2024-08-07 01:11:08
   description: MyString
   user: user
 
 two:
   name: MyString
-  start_at: 2024-08-07 01:11:08
-  end_at: 2024-08-07 01:11:08
+  start_date: 2024-08-07 01:11:08
   description: MyString
   user: organizer
