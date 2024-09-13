@@ -6,7 +6,7 @@
     .flex.justify-between
       = link_to '< Events', events_path, class: :link
       = render(BadgeComponent.new(type: event_state_type(@event.state)).with_content(@event.state.camelize))
-    = image_tag @event.images.first, class: "w-full object-cover rounded-t-lg shadow"
+    = image_tag @event.images.first || '', class: "w-full object-cover rounded-t-lg shadow"
     image
     .flex.justify-between
       div

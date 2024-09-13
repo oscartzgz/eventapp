@@ -25,7 +25,10 @@ class EventsController < ApplicationController
   def edit; end
 
   def update
-    if @event.update(event_params)
+    cleaned_event_params = event_params.to_h
+    cleaned_event_params.delete(:images) if event_params[:images] == [ "" ]
+
+    if @event.update(cleaned_event_params)
       redirect_to @event, notice: "The event was updated."
     else
       render :edit
