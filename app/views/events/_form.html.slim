@@ -1,0 +1,20 @@
+= form_with model: @event, data: { turbo: false, controller: 'image-preview' } do |form|
+  .flex.flex-col.gap-4
+    = image_tag @event.images.first || '', class: 'rounded shadow-lg', data: { 'image-preview-target': 'preview' }
+    = form.file_field :images, multiple: true, accept: 'image/*', data: { 'image-preview-target': 'input', action: 'change->image-preview#preview' }
+    label
+      | Name
+      = form.text_field :name, class: 'block w-full'
+      = field_errors(@event, :name)
+    .flex.gap-4
+      label.w-full
+        | Start at
+        = form.datetime_local_field :start_date, class: 'block w-full'
+        = field_errors(@event, :start_date)
+
+    div
+      label More details
+      = form.rich_text_area :content
+      = field_errors(@event, :content)
+    
+    = form.submit class: 'btn-primary'

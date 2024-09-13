@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
       Current.user_agent = request.user_agent
       Current.ip_address = request.ip
     end
+
+    def validate_organizer
+      redirect_to root_url unless Current.user.organizer?
+    end
 end

@@ -1,0 +1,42 @@
+.flex.flex-col.gap-4.w-full
+  = render(AlertComponent.new(type: :success).with_content(notice)) if notice
+  = render(AlertComponent.new(type: :error).with_content(notice)) if alert
+  .flex.justify-between
+    h1.text-2xl.font-bold My events
+    = link_to 'Create an event', new_event_path, class: 'btn-primary'
+  table.w-full
+    thead
+      tr.text-left
+        th.px-2 Name
+        th.px-2 Starts at
+        th.px-2 Ends at
+        th.px-2 State
+        th.px-2
+    tbody
+      - @events.each do |event|
+        tr.even:bg-gray-100.hover:bg-violet-200
+          td.px-2.py-2 = link_to event.name, event, class: :link
+          td.px-2.py-2 = event.start_date
+          td.px-2.py-2
+            = render(BadgeComponent.new(type: event_state_type(event.state))\
+                                    .with_content(event.state.camelize))
+          td.px-2.py-2
+            = render(DropdownComponent.new()) do |obj|
+              .w-6.h-6.bg-gray-200.rounded-full
+                i.fa-solid.fa-ellipsis-vertical
+
+              - if event.draft?
+                - obj.with_item do
+                  = button_to 'Publish', event_path(event, event: { state: :published } ), method: :put, class: :link
+              - unless event.archived? || event.draft?
+                - obj.with_item do
+                  = button_to 'Archive', event_path(event, event: { state: :archived } ), method: :put, class: :link
+              - unless event.archived?
+                - obj.with_item do
+                  div: .h-px.min-w-20.p-0.border
+              - unless event.archived?
+                - obj.with_item do
+                  = link_to 'Edit', edit_event_path(event), class: :link
+              - obj.with_item do 
+                = link_to 'Delete', event, class: 'link-error', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
+

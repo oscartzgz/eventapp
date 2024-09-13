@@ -1,0 +1,20 @@
+.flex.justify-center.w-full
+  .flex.flex-col.w-1/2.gap-4.mb-24
+    = render(AlertComponent.new(type: :success).with_content(notice)) if notice
+    = render(AlertComponent.new(type: :error).with_content(notice)) if alert
+
+    .flex.justify-between
+      = link_to '< Events', events_path, class: :link
+      = render(BadgeComponent.new(type: event_state_type(@event.state)).with_content(@event.state.camelize))
+    = image_tag @event.images.first || '', class: "w-full object-cover rounded-t-lg shadow"
+    image
+    .flex.justify-between
+      div
+        h1.font-bold.text-2xl = @event.name
+        p Starts at: #{@event.start_date}
+      div
+        = link_to 'Edit event', edit_event_path(@event), class: 'btn-primary'
+    .mt-4
+      / h2.text-lg.font-bold.mb-4 More details
+      .bg-gray-100.rounded-b-lg.p-4.shadow-lg
+        = @event.content
