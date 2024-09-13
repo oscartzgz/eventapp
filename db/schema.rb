@@ -76,7 +76,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_11_040121) do
     t.string "name", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
-    t.integer "role", null: false
+    t.integer "role", default: 0, null: false
     t.boolean "verified", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -1,5 +1,5 @@
 .rounded-lg.shadow-lg.overflow-hidden
-  image.h-64.w-full.object-cover src="#{Event::FAKE_IMAGES.sample}"
+  = image_tag @event.images.first, class: "h-64 w-full object-cover"
   .flex.flex-col.gap-4.p-4
     .font-bold.text-xl = @event.name
     .text-gray-400 = @event.start_at.strftime('%d/%b/%Y - %I%P')

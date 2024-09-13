@@ -1,5 +1,6 @@
-= form_with model: @event, data: { turbo: false } do |form|
+= form_with model: @event, data: { turbo: false, controller: :preview_image } do |form|
   .flex.flex-col.gap-4
+    = image_tag @event.images.first, class: 'rounded shadow-lg'
     = form.file_field :images, multiple: true, accept: 'image/*'
     label
       | Name

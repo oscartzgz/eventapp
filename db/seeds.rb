@@ -7,6 +7,9 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+#
+
+require "open-uri"
 
 
 puts "Cleaning users and dependencies"
@@ -33,5 +36,12 @@ User.organizer.each do |user|
       end_at: start_at + rand(5.hours),
       content: Faker::Lorem.paragraphs
     )
+
+    user.events.each do |event|
+      url = URI.parse(Event::FAKE_IMAGES.sample)
+      filename = File.basename(url.path)
+      file = URI.open(url)
+      event.images.attach(io: file, filename: filename)
+    end
   end
 end
