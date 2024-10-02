@@ -64,4 +64,4 @@ gem "bcrypt", "~> 3.1.7"
 
 gem "slim-rails", "~> 3.6"
 
-gem "view_component", "~> 3.14"
+gem "view_component", "~> 3.16"
